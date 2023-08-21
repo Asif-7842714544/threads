@@ -8,12 +8,7 @@ import Link from "next/link";
 import profile from "@/public/assets/profile.svg";
 import deletepic from "@/public/assets/delete.svg";
 import ReactTimeago from "react-timeago";
-import {
- 
-  doc,
-  deleteDoc,
-
-} from "firebase/firestore";
+import { doc, deleteDoc, Timestamp } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -23,27 +18,14 @@ interface Props {
   username: string;
   userimg: string;
   thread: string;
-  timestamp: string;
+  timestamp: Timestamp;
   comment?: string;
 }
 
 function ThreadCard({ id, username, userimg, thread, timestamp }: Props) {
-  // const [comments, setcomments] = useState([]);
-
-  // console.log(comments);
-
-  // useEffect(() => {
-  //   return onSnapshot(
-  //     query(
-  //       collection(db, "Threads", id, "comments"),
-  //       orderBy("timestamp", "desc")
-  //     ),
-  //     (snapshot) => setcomments(snapshot.docs)
-  //   )
-  // }, [db]);
   const deleteposts = async () => {
     await deleteDoc(doc(db, "Threads", id));
-    
+
     toast("Thread Deleted", {
       position: "top-right",
       autoClose: 3000,
@@ -130,21 +112,11 @@ function ThreadCard({ id, username, userimg, thread, timestamp }: Props) {
                     className="cursor-pointer object-contain hover:scale-125"
                   />
                 </div>
-                {/* {comment && comment.length > 0 && (
-                <div>
-                  <Link href={`/thread/${id}`}>
-                    <p className="mt-1 text-subtle-medium text-gray-1">
-                      {comment.length} replies
-                    </p>
-                  </Link>
-                </div>
-              )} */}
               </div>
               <div className="right-4">
                 <ReactTimeago
                   className="text-subtle-medium text-white"
                   date={timestamp?.toDate()}
-                  locale="en-US"
                 />
               </div>
             </div>
