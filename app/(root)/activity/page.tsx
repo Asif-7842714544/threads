@@ -32,13 +32,13 @@ function page() {
               site undeer construction
             </h1>
           </div>
-          <div className="error__nav e-nav">
+          {/* <div className="error__nav e-nav">
             <a
               href="http://www.thedresscounter.com"
               target="_blanck"
               className="e-nav__link"
             ></a>
-          </div>
+          </div> */}
         </div>
         {/* <!-- END Content --> */}
       </section>
