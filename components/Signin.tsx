@@ -16,7 +16,7 @@ function Signin() {
   }, [session]);
 
   return (
-    <div className="bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900">
+    <div className="">
         <div className="flex flex-col items-center justify-center p-20 h-full  ">
           <Image
             className=""
